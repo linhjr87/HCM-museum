@@ -65,6 +65,21 @@ describe('useStepIndex', () => {
     expect(result.current.visited.every((v) => Number.isInteger(v))).toBe(true);
   });
 
+  it('go(Infinity) đến bước cuối', () => {
+    const { result } = renderHook(() => useStepIndex(5));
+    act(() => result.current.go(Infinity));
+    expect(result.current.index).toBe(4);
+    expect(result.current.visited).toEqual([0, 4]);
+  });
+
+  it('go(-Infinity) đến bước đầu', () => {
+    const { result } = renderHook(() => useStepIndex(5));
+    act(() => result.current.go(2));
+    act(() => result.current.go(-Infinity));
+    expect(result.current.index).toBe(0);
+    expect(result.current.visited).toEqual([0, 2]);
+  });
+
   it('useStepIndex(1) có allVisited === true at mount vì đã xem đủ bước', () => {
     const { result } = renderHook(() => useStepIndex(1));
     expect(result.current.allVisited).toBe(true);

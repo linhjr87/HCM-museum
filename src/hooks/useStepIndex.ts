@@ -9,8 +9,11 @@ export type StepIndex = {
   prev: () => void;
 };
 
-const clamp = (value: number, max: number) =>
-  Number.isFinite(value) ? Math.min(Math.max(Math.round(value), 0), max) : 0;
+const clamp = (value: number, max: number) => {
+  if (Number.isNaN(value)) return 0;
+  if (!Number.isFinite(value)) return value > 0 ? max : 0;
+  return Math.min(Math.max(Math.round(value), 0), max);
+};
 const remember = (list: number[], target: number) =>
   list.includes(target) ? list : [...list, target].sort((a, b) => a - b);
 
