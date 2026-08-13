@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.vercel/
+.DS_Store
+*.local
+
+# Bản trích thô từ slides — sinh lại được bằng scripts/extract-slides.mjs
+docs/content-raw/
+
+# Không đưa slide gốc của môn học vào kho
+*.pptx
