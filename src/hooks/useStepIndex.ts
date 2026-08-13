@@ -9,7 +9,8 @@ export type StepIndex = {
   prev: () => void;
 };
 
-const clamp = (value: number, max: number) => Math.min(Math.max(value, 0), max);
+const clamp = (value: number, max: number) =>
+  Number.isFinite(value) ? Math.min(Math.max(Math.round(value), 0), max) : 0;
 const remember = (list: number[], target: number) =>
   list.includes(target) ? list : [...list, target].sort((a, b) => a - b);
 
@@ -41,7 +42,7 @@ export function useStepIndex(total: number): StepIndex {
   const next = useCallback(() => shift(1), [shift]);
   const prev = useCallback(() => shift(-1), [shift]);
 
-  const allVisited = useMemo(() => visited.length >= total, [visited, total]);
+  const allVisited = useMemo(() => total > 0 && visited.length >= total, [visited, total]);
 
   return { index, visited, allVisited, go, next, prev };
 }

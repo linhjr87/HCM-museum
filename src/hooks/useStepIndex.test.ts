@@ -45,4 +45,33 @@ describe('useStepIndex', () => {
     act(() => result.current.go(2));
     expect(result.current.allVisited).toBe(true);
   });
+
+  it('go(NaN) clamps đến 0 và không thêm NaN vào visited', () => {
+    const { result } = renderHook(() => useStepIndex(5));
+    act(() => result.current.go(2));
+    expect(result.current.index).toBe(2);
+    expect(result.current.visited).toEqual([0, 2]);
+    act(() => result.current.go(NaN));
+    expect(result.current.index).toBe(0);
+    expect(result.current.visited).toEqual([0, 2]);
+    expect(result.current.visited.every((v) => Number.isInteger(v))).toBe(true);
+  });
+
+  it('go(1.6) làm tròn thành index 2 và visited chỉ chứa số nguyên', () => {
+    const { result } = renderHook(() => useStepIndex(5));
+    act(() => result.current.go(1.6));
+    expect(result.current.index).toBe(2);
+    expect(result.current.visited).toEqual([0, 2]);
+    expect(result.current.visited.every((v) => Number.isInteger(v))).toBe(true);
+  });
+
+  it('useStepIndex(1) có allVisited === true at mount vì đã xem đủ bước', () => {
+    const { result } = renderHook(() => useStepIndex(1));
+    expect(result.current.allVisited).toBe(true);
+  });
+
+  it('useStepIndex(0) có allVisited === false', () => {
+    const { result } = renderHook(() => useStepIndex(0));
+    expect(result.current.allVisited).toBe(false);
+  });
 });
