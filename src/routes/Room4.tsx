@@ -7,7 +7,7 @@ import { useReducedMotion } from '../hooks/useReducedMotion';
 import GroupCard from '../rooms/room4/GroupCard';
 import StrengthBar from '../rooms/room4/StrengthBar';
 import UnityCircle from '../rooms/room4/UnityCircle';
-import { addGroup, isComplete, strength } from '../rooms/room4/unityState';
+import { addKnownGroup, isComplete, strength } from '../rooms/room4/unityState';
 import '../rooms/room4/room4.css';
 
 export default function Room4() {
@@ -26,7 +26,7 @@ export default function Room4() {
     const group = groups.find((item) => item.id === id);
     if (!group) return;
     setFlash(group.message);
-    setJoined((current) => addGroup(current, id));
+    setJoined((current) => addKnownGroup(current, id, groups.map((item) => item.id)));
   }
 
   function onDragEnd(event: DragEndEvent) {

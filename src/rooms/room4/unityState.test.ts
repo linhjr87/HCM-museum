@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { addGroup, isComplete, strength, TOTAL_GROUPS } from './unityState';
+import { addGroup, addKnownGroup, isComplete, strength, TOTAL_GROUPS } from './unityState';
 
 describe('unityState', () => {
   it('bắt đầu ở 0%', () => {
@@ -34,5 +34,11 @@ describe('unityState', () => {
   it('giới hạn sức mạnh ở 100% khi có nhiều hơn 8 nhóm', () => {
     const overCapacity = Array.from({ length: TOTAL_GROUPS + 1 }, (_, i) => `nhom-${i}`);
     expect(strength(overCapacity)).toBe(100);
+  });
+
+  it('giữ nguyên trạng thái khi ID không thuộc các nhóm đã biết', () => {
+    const before = ['cong-nhan'];
+    const result = addKnownGroup(before, 'khong-ton-tai', ['cong-nhan', 'nong-dan']);
+    expect(result).toBe(before);
   });
 });
