@@ -16,7 +16,7 @@ export default function WorldMap({ stops, index, visited, onSelect, onStep }: Pr
   const ordered = visited.slice().sort((a, b) => a - b);
   const legs = ordered.slice(1).map((step, i) => [ordered[i], step] as const);
 
-  function onKeyDown(event: React.KeyboardEvent<SVGSVGElement>) {
+  function onKeyDown(event: React.KeyboardEvent<HTMLButtonElement>) {
     if (event.key === 'ArrowRight') {
       event.preventDefault();
       onStep(1);
@@ -32,10 +32,8 @@ export default function WorldMap({ stops, index, visited, onSelect, onStep }: Pr
       <svg
         className="map"
         viewBox="0 0 1000 500"
-        tabIndex={0}
-        onKeyDown={onKeyDown}
         role="img"
-        aria-label="Bản đồ hành trình, dùng phím mũi tên trái phải hoặc các nút địa điểm để chuyển điểm"
+        aria-label="Bản đồ hành trình qua năm địa điểm"
       >
       <g className="map__grid" aria-hidden="true">
         {GRID_X.map((x) => (
@@ -61,14 +59,6 @@ export default function WorldMap({ stops, index, visited, onSelect, onStep }: Pr
               r={on ? 8 : 5}
               fill={on ? 'var(--accent)' : 'var(--paper-dim)'}
             />
-            <circle
-              cx={stop.x}
-              cy={stop.y}
-              r="20"
-              fill="transparent"
-              aria-hidden="true"
-              onClick={() => onSelect(i)}
-            />
             <text
               className="map__label"
               x={stop.x + stop.labelDx}
@@ -90,6 +80,7 @@ export default function WorldMap({ stops, index, visited, onSelect, onStep }: Pr
             className={i === index ? 'map__control map__control--on' : 'map__control'}
             aria-current={i === index ? 'step' : undefined}
             onClick={() => onSelect(i)}
+            onKeyDown={onKeyDown}
           >
             {stop.label}
           </button>

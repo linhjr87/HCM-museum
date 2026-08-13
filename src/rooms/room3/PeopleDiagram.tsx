@@ -45,7 +45,7 @@ export default function PeopleDiagram({ facets, activeId, onToggle }: Props) {
               d={arcPath(CX, CY, R, start, end)}
               fill="none"
               stroke="transparent"
-              strokeWidth={30}
+              strokeWidth={56}
               tabIndex={0}
               role="button"
               aria-pressed={on}
