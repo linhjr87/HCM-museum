@@ -1,0 +1,84 @@
+.tl {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0 0 2.5rem;
+  padding: 2rem 0 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+}
+
+.tl__rail {
+  position: absolute;
+  top: 2.55rem;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--line);
+}
+
+.tl__item { flex: 1 0 6.5rem; scroll-snap-align: center; }
+
+.tl__dot {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .8rem;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--paper-dim);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.tl__dot::before {
+  content: '';
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: 1px solid var(--paper-dim);
+}
+
+.tl__dot:hover, .tl__dot--on { color: var(--paper); }
+.tl__dot--on::before { border-color: var(--accent); }
+
+.tl__spark {
+  position: absolute;
+  top: 0;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 14px 4px rgba(179, 39, 30, .55);
+}
+
+.tl-panel { max-width: var(--measure); }
+.tl-panel__year {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 9vw, 4.5rem);
+  line-height: 1;
+  color: var(--accent);
+  margin: 0;
+}
+.tl-panel__place {
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-size: .85rem;
+  color: var(--accent-soft);
+  margin: .6rem 0 1rem;
+}
+.tl-panel__event { margin: 0 0 .8rem; }
+.tl-panel__meaning {
+  margin: 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--accent);
+  color: var(--paper-dim);
+}
