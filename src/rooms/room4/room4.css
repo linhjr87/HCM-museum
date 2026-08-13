@@ -17,6 +17,17 @@
 .gcard:hover { border-color: var(--accent); }
 .gcard--dragging { cursor: grabbing; border-color: var(--accent); position: relative; z-index: 2; }
 .r4__flash { border-left: 2px solid var(--accent-soft); padding-left: 1rem; color: var(--paper-dim); max-width: var(--measure); }
+.r4__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
 .r4__done { margin-top: 1.5rem; border-top: 1px solid var(--line); padding-top: 1.5rem; }
 .r4__quote { font-family: var(--font-display); font-size: clamp(1.2rem, 3vw, 1.8rem); color: var(--accent-soft); margin: 0 0 1rem; }
 .r4__reset { min-height: 44px; padding: .6rem 1.2rem; background: none; border: 1px solid var(--accent); color: var(--accent); font-family: var(--font-body); cursor: pointer; }

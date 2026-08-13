@@ -72,7 +72,10 @@ export default function WorldMap({ stops, index, visited, onSelect, onStep }: Pr
       })}
       </svg>
 
-      <div className="map__controls" role="group" aria-label="Chọn địa điểm trên hành trình">
+      <p className="map__legend-title" id="map-legend-title">
+        Chú giải hành trình — chọn một địa điểm để xem câu chuyện
+      </p>
+      <div className="map__controls" role="group" aria-labelledby="map-legend-title">
         {stops.map((stop, i) => (
           <button
             key={stop.id}

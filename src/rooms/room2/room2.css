@@ -20,7 +20,12 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
   gap: .5rem;
-  margin-top: .75rem;
+}
+
+.map__legend-title {
+  margin: .75rem 0 .5rem;
+  color: var(--paper-dim);
+  font-size: .875rem;
 }
 
 .map__control {
@@ -30,7 +35,7 @@
   background: var(--ink-soft);
   color: var(--paper-dim);
   font: inherit;
-  font-size: .82rem;
+  font-size: .875rem;
   cursor: pointer;
   transition: border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
 }
@@ -51,6 +56,10 @@
   letter-spacing: .06em;
 }
 .map__stop--on .map__label { fill: var(--paper); }
+
+@media (max-width: 600px) {
+  .map__label { display: none; }
+}
 
 .story__place { font-size: 1.6rem; color: var(--accent); }
 .story__event { margin: .8rem 0; }
