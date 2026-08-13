@@ -21,7 +21,10 @@ export default function RouteLine({ from, to, faded = false }: Props) {
       strokeLinecap="round"
       initial={{ pathLength: 0, opacity: 1 }}
       animate={{ pathLength: 1, opacity: faded ? 0.25 : 1 }}
-      transition={{ pathLength: { duration: 0.6, ease: 'easeOut' }, opacity: { delay: 0.6 } }}
+      transition={{
+        pathLength: { duration: 0.4, ease: 'easeOut' },
+        opacity: { duration: 0.15, delay: 0.25 },
+      }}
     />
   );
 }
