@@ -30,4 +30,9 @@ describe('unityState', () => {
     expect(strength(all)).toBe(100);
     expect(isComplete(all)).toBe(true);
   });
+
+  it('giới hạn sức mạnh ở 100% khi có nhiều hơn 8 nhóm', () => {
+    const overCapacity = Array.from({ length: TOTAL_GROUPS + 1 }, (_, i) => `nhom-${i}`);
+    expect(strength(overCapacity)).toBe(100);
+  });
 });

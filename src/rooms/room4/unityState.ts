@@ -5,7 +5,7 @@ export function addGroup(joined: string[], id: string): string[] {
 }
 
 export function strength(joined: string[]): number {
-  return (joined.length / TOTAL_GROUPS) * 100;
+  return Math.min((joined.length / TOTAL_GROUPS) * 100, 100);
 }
 
 export function isComplete(joined: string[]): boolean {
