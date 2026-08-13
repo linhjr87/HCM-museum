@@ -1,0 +1,19 @@
+:root {
+  --ink: #0E0D0B;
+  --ink-soft: #1A1815;
+  --paper: #EDE6D8;
+  --paper-dim: #A8A092;
+  --accent: #B3271E;
+  --accent-soft: #C9A227;
+  --line: rgba(237, 230, 216, .14);
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Be Vietnam Pro', system-ui, sans-serif;
+
+  --dur-fast: 250ms;
+  --dur-slow: 400ms;
+  --ease: cubic-bezier(.22, .61, .36, 1);
+
+  --space: clamp(1rem, 4vw, 3rem);
+  --measure: 62ch;
+}
