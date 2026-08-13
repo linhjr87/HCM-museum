@@ -199,8 +199,16 @@ Nạp font qua Google Fonts với `display=swap`.
 
 ### Chuyển động
 
-Thời lượng 250–400ms, easing ease-out, không bounce, không xoay quá 8 độ. Mọi animation
-bọc trong kiểm tra `prefers-reduced-motion: reduce` — khi bật, chuyển động thu về đổi opacity.
+Chuyển động phản hồi thao tác — hover, nghiêng thẻ, đổi panel, chuyển mốc — dài 250–400ms,
+easing ease-out, không bounce, không xoay quá 8 độ.
+
+Chuyển động nền lặp vô hạn là ngoại lệ và có trần riêng: nhịp chậm, 2–10 giây mỗi chu kỳ,
+biên độ nhỏ. Đây là tín hiệu gợi ý chứ không phải phản hồi, nên ép nó về 400ms sẽ thành
+giật như đèn báo lỗi. Hai chuyển động thuộc nhóm này: mũi tên gợi ý cuộn ở sảnh, và chấm
+sáng chạy quanh vòng tuần hoàn ở phòng 3.
+
+Mọi animation, cả hai nhóm, bọc trong kiểm tra `prefers-reduced-motion: reduce` — khi bật,
+chuyển động thu về đổi opacity hoặc dừng hẳn.
 
 ---
 

@@ -9,3 +9,4 @@ docs/content-raw/
 
 # Không đưa slide gốc của môn học vào kho
 *.pptx
+.claude/

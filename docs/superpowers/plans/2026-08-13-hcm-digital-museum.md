@@ -18,7 +18,9 @@
 - Bảng màu chỉ dùng token trong `src/styles/tokens.css`. Không viết mã màu trực tiếp trong component.
 - Token màu, giá trị nguyên văn từ spec: `--ink: #0E0D0B`, `--ink-soft: #1A1815`, `--paper: #EDE6D8`, `--paper-dim: #A8A092`, `--accent: #B3271E`, `--accent-soft: #C9A227`, `--line: rgba(237,230,216,.14)`.
 - Font: tiêu đề `Playfair Display`, thân bài `Be Vietnam Pro`, nạp qua Google Fonts với `display=swap`.
-- Chuyển động: 250–400ms, ease-out, không bounce, xoay tối đa 8 độ. Mọi animation phải tắt khi `prefers-reduced-motion: reduce`.
+- Chuyển động phản hồi thao tác (hover, nghiêng thẻ, đổi panel, chuyển mốc): 250–400ms, ease-out, không bounce, xoay tối đa 8 độ.
+- Chuyển động nền lặp vô hạn là ngoại lệ có trần riêng: 2–10 giây mỗi chu kỳ, biên độ nhỏ. Chỉ gồm mũi tên gợi ý cuộn ở sảnh và chấm sáng vòng tuần hoàn ở phòng 3.
+- Mọi animation, cả hai nhóm, phải tắt khi `prefers-reduced-motion: reduce`.
 - Mọi mục nội dung bắt buộc có trường `source` trỏ về chương và session. `source` **không hiển thị trên giao diện**.
 - Ngôn ngữ giao diện: chỉ tiếng Việt.
 - Route: `/`, `/phong-1`, `/phong-2`, `/phong-3`, `/phong-4`, `*`.
