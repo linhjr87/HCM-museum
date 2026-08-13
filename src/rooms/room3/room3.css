@@ -1,0 +1,39 @@
+.r3 {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .r3 { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}
+
+.r3__diagram { max-width: 30rem; margin-inline: auto; width: 100%; }
+
+.pd { width: 100%; height: auto; }
+.pd__arc { cursor: pointer; transition: opacity var(--dur-fast) var(--ease); }
+.pd__arc--dim { opacity: .35; }
+
+.pd__core {
+  font-family: var(--font-display);
+  font-size: 15px;
+  fill: var(--paper);
+  letter-spacing: .06em;
+}
+
+.pd__label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  fill: var(--paper-dim);
+}
+
+.r3__detail h2 { font-size: 1.6rem; color: var(--accent); }
+.r3__short { color: var(--accent-soft); margin: .4rem 0 .8rem; }
+.r3__hint { color: var(--paper-dim); font-style: italic; }
+.r3__note { color: var(--paper-dim); font-size: .92rem; max-width: var(--measure); }
+
+.cycle { width: min(16rem, 100%); height: auto; margin-top: 2rem; }
+.cycle__label { font-family: var(--font-body); font-size: 10px; fill: var(--paper); }
