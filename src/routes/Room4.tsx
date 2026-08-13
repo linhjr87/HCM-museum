@@ -1,4 +1,4 @@
-import { DndContext, type DragEndEvent } from '@dnd-kit/core';
+import { DndContext, PointerSensor, type DragEndEvent, useSensor, useSensors } from '@dnd-kit/core';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import RoomShell from '../components/RoomShell';
@@ -14,6 +14,9 @@ export default function Room4() {
   const [joined, setJoined] = useState<string[]>([]);
   const [flash, setFlash] = useState<string | null>(null);
   const reduced = useReducedMotion();
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
+  );
 
   useEffect(() => {
     if (!flash) return;
@@ -42,7 +45,7 @@ export default function Room4() {
     : <motion.div className="r4__done" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}><p className="r4__quote">{completionQuote}</p><button type="button" className="r4__reset" onClick={() => setJoined([])}>Làm lại</button></motion.div>);
 
   return <RoomShell number="04" title="Đại đoàn kết" tagline="Đoàn kết là một chiến lược, không phải một khẩu hiệu.">
-    <DndContext onDragEnd={onDragEnd}>
+    <DndContext sensors={sensors} onDragEnd={onDragEnd}>
       <div className="r4">
         <div className="r4__stage"><UnityCircle joined={joined} groups={groups} /><StrengthBar value={strength(joined)} reduced={reduced} /></div>
         <div className="r4__side">
