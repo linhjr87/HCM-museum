@@ -28,14 +28,15 @@ export default function WorldMap({ stops, index, visited, onSelect, onStep }: Pr
   }
 
   return (
-    <svg
-      className="map"
-      viewBox="0 0 1000 500"
-      tabIndex={0}
-      onKeyDown={onKeyDown}
-      role="group"
-      aria-label="Bản đồ hành trình, dùng phím mũi tên trái phải để chuyển điểm"
-    >
+    <div className="map-wrap">
+      <svg
+        className="map"
+        viewBox="0 0 1000 500"
+        tabIndex={0}
+        onKeyDown={onKeyDown}
+        role="img"
+        aria-label="Bản đồ hành trình, dùng phím mũi tên trái phải hoặc các nút địa điểm để chuyển điểm"
+      >
       <g className="map__grid" aria-hidden="true">
         {GRID_X.map((x) => (
           <line key={`x${x}`} x1={x} y1="0" x2={x} y2="500" />
@@ -65,17 +66,8 @@ export default function WorldMap({ stops, index, visited, onSelect, onStep }: Pr
               cy={stop.y}
               r="20"
               fill="transparent"
-              tabIndex={0}
-              role="button"
-              aria-label={stop.label}
-              aria-current={on ? 'step' : undefined}
+              aria-hidden="true"
               onClick={() => onSelect(i)}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                  event.preventDefault();
-                  onSelect(i);
-                }
-              }}
             />
             <text
               className="map__label"
@@ -88,6 +80,21 @@ export default function WorldMap({ stops, index, visited, onSelect, onStep }: Pr
           </g>
         );
       })}
-    </svg>
+      </svg>
+
+      <div className="map__controls" role="group" aria-label="Chọn địa điểm trên hành trình">
+        {stops.map((stop, i) => (
+          <button
+            key={stop.id}
+            type="button"
+            className={i === index ? 'map__control map__control--on' : 'map__control'}
+            aria-current={i === index ? 'step' : undefined}
+            onClick={() => onSelect(i)}
+          >
+            {stop.label}
+          </button>
+        ))}
+      </div>
+    </div>
   );
 }

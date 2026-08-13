@@ -1,7 +1,21 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import type { Milestone } from '../../content/types';
+import { useReducedMotion } from '../../hooks/useReducedMotion';
 
 export default function MilestonePanel({ item }: { item: Milestone }) {
+  const reduced = useReducedMotion();
+
+  if (reduced) {
+    return (
+      <article className="tl-panel">
+        <p className="tl-panel__year">{item.year}</p>
+        <p className="tl-panel__place">{item.place}</p>
+        <p className="tl-panel__event">{item.event}</p>
+        <p className="tl-panel__meaning">{item.meaning}</p>
+      </article>
+    );
+  }
+
   return (
     <AnimatePresence mode="wait">
       <motion.article

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import RoomShell from '../components/RoomShell';
 import { closingQuote, stops } from '../content/room2';
+import { useReducedMotion } from '../hooks/useReducedMotion';
 import { useStepIndex } from '../hooks/useStepIndex';
 import StoryPanel from '../rooms/room2/StoryPanel';
 import WorldMap from '../rooms/room2/WorldMap';
@@ -8,6 +9,7 @@ import '../rooms/room2/room2.css';
 
 export default function Room2() {
   const step = useStepIndex(stops.length);
+  const reduced = useReducedMotion();
 
   return (
     <RoomShell
@@ -26,16 +28,14 @@ export default function Room2() {
         <StoryPanel stop={stops[step.index]} />
       </div>
 
-      {step.allVisited && (
-        <motion.p
+      {step.allVisited && (reduced
+        ? <p className="r2__closing">{closingQuote}</p>
+        : <motion.p
           className="r2__closing"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4 }}
-        >
-          {closingQuote}
-        </motion.p>
-      )}
+        >{closingQuote}</motion.p>)}
     </RoomShell>
   );
 }

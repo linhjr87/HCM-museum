@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import type { Milestone } from '../../content/types';
+import { useReducedMotion } from '../../hooks/useReducedMotion';
 
 type Props = {
   items: Milestone[];
@@ -9,6 +10,8 @@ type Props = {
 };
 
 export default function Timeline({ items, index, onSelect, onStep }: Props) {
+  const reduced = useReducedMotion();
+
   function onKeyDown(event: React.KeyboardEvent<HTMLOListElement>) {
     if (event.key === 'ArrowRight') {
       event.preventDefault();
@@ -38,9 +41,9 @@ export default function Timeline({ items, index, onSelect, onStep }: Props) {
               aria-current={active ? 'step' : undefined}
               onClick={() => onSelect(i)}
             >
-              {active && (
-                <motion.span layoutId="tl-spark" className="tl__spark" aria-hidden="true" />
-              )}
+              {active && (reduced
+                ? <span className="tl__spark" aria-hidden="true" />
+                : <motion.span layoutId="tl-spark" className="tl__spark" aria-hidden="true" />)}
               <span className="tl__year">{item.year}</span>
             </button>
           </li>

@@ -5,7 +5,7 @@
 .unity__ring { filter: drop-shadow(0 0 calc(var(--unity-glow) * 22px) var(--accent)); }
 .unity--over svg { transform: scale(1.02); transition: transform var(--dur-fast) var(--ease); }
 .unity__core { font-family: var(--font-display); font-size: 17px; fill: var(--paper); letter-spacing: .05em; }
-.unity__seat { font-family: var(--font-body); font-size: 10px; fill: var(--paper-dim); }
+.unity__seat { font-family: var(--font-body); font-size: 12px; fill: var(--paper-dim); }
 .bar { margin-top: 1.5rem; }
 .bar__head { display: flex; justify-content: space-between; font-size: .85rem; letter-spacing: .1em; text-transform: uppercase; color: var(--paper-dim); margin-bottom: .5rem; }
 .bar__value { color: var(--accent-soft); }
@@ -13,12 +13,12 @@
 .bar__fill { height: 100%; background: var(--accent); }
 .r4__hint { color: var(--paper-dim); font-size: .92rem; }
 .r4__deck { display: flex; flex-wrap: wrap; gap: .6rem; margin-block: 1rem; }
-.gcard { padding: .6rem 1rem; background: var(--ink-soft); border: 1px solid var(--line); color: var(--paper); font-family: var(--font-body); font-size: .95rem; cursor: grab; touch-action: none; transition: border-color var(--dur-fast) var(--ease); }
+.gcard { min-height: 44px; padding: .6rem 1rem; background: var(--ink-soft); border: 1px solid var(--line); color: var(--paper); font-family: var(--font-body); font-size: .95rem; cursor: grab; touch-action: none; transition: border-color var(--dur-fast) var(--ease); }
 .gcard:hover { border-color: var(--accent); }
 .gcard--dragging { cursor: grabbing; border-color: var(--accent); position: relative; z-index: 2; }
 .r4__flash { border-left: 2px solid var(--accent-soft); padding-left: 1rem; color: var(--paper-dim); max-width: var(--measure); }
 .r4__done { margin-top: 1.5rem; border-top: 1px solid var(--line); padding-top: 1.5rem; }
 .r4__quote { font-family: var(--font-display); font-size: clamp(1.2rem, 3vw, 1.8rem); color: var(--accent-soft); margin: 0 0 1rem; }
-.r4__reset { padding: .6rem 1.2rem; background: none; border: 1px solid var(--accent); color: var(--accent); font-family: var(--font-body); cursor: pointer; }
+.r4__reset { min-height: 44px; padding: .6rem 1.2rem; background: none; border: 1px solid var(--accent); color: var(--accent); font-family: var(--font-body); cursor: pointer; }
 .r4__reset:hover { background: var(--accent); color: var(--paper); }
 @media (prefers-reduced-motion: reduce) { .unity--over svg, .gcard { transition: none; } }

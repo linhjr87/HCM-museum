@@ -26,6 +26,9 @@
 
 .hall__scroll {
   margin-top: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   color: var(--paper-dim);
   text-decoration: none;
   font-size: .9rem;

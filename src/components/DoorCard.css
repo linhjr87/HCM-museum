@@ -44,4 +44,4 @@
   color: var(--line);
   transition: color var(--dur-slow) var(--ease);
 }
-.door:hover .door__motif { color: rgba(179, 39, 30, .35); }
+.door:hover .door__motif { color: color-mix(in srgb, var(--accent) 35%, transparent); }

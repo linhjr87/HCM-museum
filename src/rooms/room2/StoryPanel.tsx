@@ -1,7 +1,20 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import type { MapStop } from '../../content/types';
+import { useReducedMotion } from '../../hooks/useReducedMotion';
 
 export default function StoryPanel({ stop }: { stop: MapStop }) {
+  const reduced = useReducedMotion();
+
+  if (reduced) {
+    return (
+      <article className="story">
+        <h2 className="story__place">{stop.label}</h2>
+        <p className="story__event">{stop.event}</p>
+        <p className="story__link">{stop.link}</p>
+      </article>
+    );
+  }
+
   return (
     <AnimatePresence mode="wait">
       <motion.article

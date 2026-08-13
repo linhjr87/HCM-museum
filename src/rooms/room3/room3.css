@@ -36,4 +36,4 @@
 .r3__note { color: var(--paper-dim); font-size: .92rem; max-width: var(--measure); }
 
 .cycle { width: min(16rem, 100%); height: auto; margin-top: 2rem; }
-.cycle__label { font-family: var(--font-body); font-size: 10px; fill: var(--paper); }
+.cycle__label { font-family: var(--font-body); font-size: 12px; fill: var(--paper); }

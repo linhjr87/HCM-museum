@@ -57,7 +57,7 @@
   height: 11px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 14px 4px rgba(179, 39, 30, .55);
+  box-shadow: 0 0 14px 4px color-mix(in srgb, var(--accent) 55%, transparent);
 }
 
 .tl-panel { max-width: var(--measure); }

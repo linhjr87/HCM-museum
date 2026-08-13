@@ -24,6 +24,12 @@ h1, h2, h3 {
 
 a { color: inherit; }
 
+.not-found__back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
 :focus-visible {
   outline: 2px solid var(--accent-soft);
   outline-offset: 3px;

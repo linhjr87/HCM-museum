@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import type { MapStop } from '../../content/types';
+import { useReducedMotion } from '../../hooks/useReducedMotion';
 
 type Props = { from: MapStop; to: MapStop; faded?: boolean };
 
@@ -12,9 +13,25 @@ export function curveBetween(from: MapStop, to: MapStop): string {
 }
 
 export default function RouteLine({ from, to, faded = false }: Props) {
+  const reduced = useReducedMotion();
+  const path = curveBetween(from, to);
+
+  if (reduced) {
+    return (
+      <path
+        d={path}
+        fill="none"
+        stroke="var(--accent)"
+        strokeWidth="2"
+        strokeLinecap="round"
+        opacity={faded ? 0.25 : 1}
+      />
+    );
+  }
+
   return (
     <motion.path
-      d={curveBetween(from, to)}
+      d={path}
       fill="none"
       stroke="var(--accent)"
       strokeWidth="2"
